@@ -1,5 +1,5 @@
 #include "Date.h"
-void Date::print() {
+void Date::print() const {
     printf("year:%d month:%d day:%d\n",_year,_month,_day);
 }
 int Date::GetMonthDay(int year, int month) {
@@ -23,7 +23,7 @@ Date::Date(int year, int month, int day) {
     //检测是否正确
     if((month<1||month>12)||day<1||day> GetMonthDay(year,month))
     {
-        cout<<"错误月份"<<endl;
+        cout<<"错误月份、日期"<<endl;
     }
 }
 Date::Date(const Date &d) {
@@ -45,6 +45,46 @@ Date &Date::operator=(const Date &d){
     return *this;
 }
 
-// 赋值运算符重载
+Date &Date::operator+=(int day){
+    if(day<0)
+    {
+        return *this-=(-day);
+    }
+    _day+=day;
+    while (_day> GetMonthDay(_year,_month))
+    {
+        _day-= GetMonthDay(_year,_month);
+        _month+=1;
+        if(_month==13)
+        {
+            _year++;
+            _month=1;
+        }
+    }
+    return *this;
+}
 
+// 赋值运算符重载
+Date Date::operator+(int day){
+    Date tmp(*this);
+    tmp+=day;
+    return tmp;
+}
+
+Date Date::operator-(int day) {
+    Date tmp(*this);
+    tmp+=(-day);
+    return tmp;
+}
+
+Date &Date::operator-=(int day) {
+    if(day<0)
+        return *this+=(-day);
+    _day-=day;
+    while (_day<=0)
+    {
+        _month--;
+        _day
+    }
+}
 
