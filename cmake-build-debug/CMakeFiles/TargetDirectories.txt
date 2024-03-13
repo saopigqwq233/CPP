@@ -1,3 +1,0 @@
-D:/BITE/CPP/cmake-build-debug/CMakeFiles/cre_des.dir
-D:/BITE/CPP/cmake-build-debug/CMakeFiles/edit_cache.dir
-D:/BITE/CPP/cmake-build-debug/CMakeFiles/rebuild_cache.dir
