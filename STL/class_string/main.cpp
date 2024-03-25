@@ -119,7 +119,7 @@ void test6(){
 }
 void test7(){
     string s1("abcdefgh");
-
+    
 }
 int main(){
     test6();
