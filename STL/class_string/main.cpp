@@ -119,9 +119,71 @@ void test6(){
 }
 void test7(){
     string s1("abcdefgh");
+    for (int i = 0; i < s1.length(); ++i) {
+        cout<<s1[i]<<' ';
+    }
+    cout<<endl;
+}
+void test8(){
+    string s1("hello");
+    string s2 = s1 + ' ' + "world";
+    cout<<s2<<endl;
+    s2 += "233";
+    cout<<s2<<endl;
+}
+void test9(){
+//    以字符串为参数
+    string s1("hello");
+    s1.append(" world");
+    cout<<"s1:"+s1<<endl;
+
+//    以string类为参数
+    string s2;
+    s2.append(s1);
+    cout<<"s2:"+s2<<endl;
+
+//    以字符串为参数，并声明长度
+    string s3("hello");
+    s3.append(" world",4);
+    cout<<"s3:"+s3<<endl;
+
+//    以string类为参数，并声明开始位置和长度
+    string s4;
+    s4.append(s2,6,5);
+    cout<<"s4:"+s4<<endl;
+//    指定拼接字符个数，拼接字符
+    string s5;
+    s5.append(10,'c');
+    cout<<"s5:"+s5<<endl;
+//    以string迭代器区间为参数
+    string s6;
+    s6.append(++s5.begin(),--s5.end());
+    cout<<"s6:"+s6<<endl;
+}
+void test10(){
+    char str[] = "hello world";
+    string s1(str);
+    s1.erase(3);//从下表3开始删到最后
+    cout<<"s1:"+s1<<endl;
+
+    string s2(str);
+    s2.erase(3,4);//从下标3开始删4个字符
+    cout<<"s2:"+s2<<endl;
+
+    string s3(str);
+    s3.erase(++s3.begin());//删掉第二个元素
+    cout<<"s3:"+s3<<endl;
+    s3.erase(--s3.end());//删掉最后一个元素
+    cout<<"s3:"+s3<<endl;
+
+    string s4(str);
+    s4.erase(++(s4.begin()),--s4.end());//删掉左闭右开的区间
+    cout<<"s4:"+s4<<endl;
+}
+void test11(){
     
 }
 int main(){
-    test6();
+    test10();
     return 0;
 }
