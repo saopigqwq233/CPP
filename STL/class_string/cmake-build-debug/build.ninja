@@ -49,8 +49,8 @@ cmake_ninja_workdir = D$:/BITE/CPP/STL/class_string/cmake-build-debug/
 
 build cmake_object_order_depends_target_class_string: phony || CMakeFiles/class_string.dir
 
-build CMakeFiles/class_string.dir/test.cpp.obj: CXX_COMPILER__class_string_unscanned_Debug D$:/BITE/CPP/STL/class_string/test.cpp || cmake_object_order_depends_target_class_string
-  DEP_FILE = CMakeFiles\class_string.dir\test.cpp.obj.d
+build CMakeFiles/class_string.dir/main.cpp.obj: CXX_COMPILER__class_string_unscanned_Debug D$:/BITE/CPP/STL/class_string/main.cpp || cmake_object_order_depends_target_class_string
+  DEP_FILE = CMakeFiles\class_string.dir\main.cpp.obj.d
   FLAGS = -g -std=gnu++11 -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\class_string.dir
   OBJECT_FILE_DIR = CMakeFiles\class_string.dir
@@ -63,7 +63,7 @@ build CMakeFiles/class_string.dir/test.cpp.obj: CXX_COMPILER__class_string_unsca
 #############################################
 # Link the executable class_string.exe
 
-build class_string.exe: CXX_EXECUTABLE_LINKER__class_string_Debug CMakeFiles/class_string.dir/test.cpp.obj
+build class_string.exe: CXX_EXECUTABLE_LINKER__class_string_Debug CMakeFiles/class_string.dir/main.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\class_string.dir

@@ -181,9 +181,22 @@ void test10(){
     cout<<"s4:"+s4<<endl;
 }
 void test11(){
-    
+    char str[] = "hello world";
+    string s1(str);
+    cout<<s1.find('e')<<endl;//从头开始找字符e
+
+    cout<<s1.find('w',3)<<endl;//从下标3开始找
+
+    cout<<s1.find("world",0,3)<<endl;//从下标0开始找和字符串前3个字符匹配的字符起始位置
+
+}
+void test12(){
+    char str[] = "hello world";
+    string s1(str);
+    //printf("%s",s1);//error
+    printf("%s\n",s1.c_str());
 }
 int main(){
-    test10();
+    test12();
     return 0;
 }

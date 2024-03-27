@@ -303,6 +303,60 @@ s4:hd
 ```
 ### 查
 查找第一个出现的字符，返回下标
-- find()
+#### find()
+```c++
+void test11(){
+    char str[] = "hello world";
+    string s1(str);
+    cout<<s1.find('e')<<endl;//从头开始找字符e
 
+    cout<<s1.find('w',3)<<endl;//从下标3开始找
+
+    cout<<s1.find("world",0,3)<<endl;//从下标0开始找和字符串前3个字符匹配的字符起始位置
+
+}
+int main(){
+    test11();
+    return 0;
+}
+```
+运行结果：
+```text
+1
+6
+6
+
+进程已结束，退出代码为 0
+```
+至于剩下的几种查找函数:
+- rfind() 逆向查找
+- find_first_of(str) 找到string和str中任意字符匹配的第一个字符
+- find_last_of(str) 找到string和str中任意字符匹配的倒数第一个字符
+- find_first_not_of(str) 找到string和str中任意字符不匹配的第一个字符
+- find_last_not_of(str) 找到string和str中任意字符不匹配的倒数第一个字符
+
+### 子串
+#### substr(size_t pos=0,size_t len = npos)
+pos指的是子串开始下标，npos默认指的是到字符串最后一位，若提供len = n，则从pos开始复制n个字符
+到子串
 ## 六、兼容C部分
+C语言中没有string类，C++提供了c_str()方法将string转化为C语言字符数组
+```c++
+void test12(){
+    char str[] = "hello world";
+    string s1(str);
+    //printf("%s",s1);//error
+    printf("%s\n",s1.c_str());
+}
+int main(){
+    test12();
+    return 0;
+}
+```
+运行结果：
+```text
+hello world
+
+进程已结束，退出代码为 0
+```
+
