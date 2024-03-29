@@ -116,7 +116,6 @@
 //    return 0;
 //}
 #include "iostream"
-#include "cstdio"
 using namespace std;
 struct SeqL{
     int *data;
@@ -167,16 +166,11 @@ void print_sl(SeqL s){
     cout<<endl;
 }
 int main(){
-//    int arr1[10]={10,8,3,4,7,9,1,5,6,2};
-//    SeqL *s = creat_list(arr1,10);
-//    print_sl(*s);
-//    int k = 2;
-//    cout<<"第"<<k<<"小:"<<small_k(*s,k);
-//    cout<<sizeof(float)<<endl;
-    float a = 20.1875;
-    cout<<sizeof (a)<<endl;
-    printf("%f",a);
-
+    int arr1[10]={10,8,3,4,7,9,1,5,6,2};
+    SeqL *s = creat_list(arr1,10);
+    print_sl(*s);
+    int k = 2;
+    cout<<"第"<<k<<"小:"<<small_k(*s,k);
     return 0;
 }
 

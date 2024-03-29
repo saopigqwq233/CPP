@@ -4,9 +4,6 @@ project(class_string)
 set(CMAKE_CXX_STANDARD 11)
 
 add_executable(class_string
-#        main.cpp
+        main.cpp
 #        test.cpp
-#        test.cpp
-        my_string.cpp
-        my_string.h
 )
