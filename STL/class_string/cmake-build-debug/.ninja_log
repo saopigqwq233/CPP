@@ -1,5 +1,8 @@
 # ninja log v5
-4	229	7332504048145140	CMakeFiles/class_string.dir/main.cpp.obj	28550e7d7a45cafa
-229	291	7332504048733273	class_string.exe	9bbb6f427aa379c8
-1	73	7334308558624437	build.ninja	1a4642fc5656e9ca
+548	652	7341977290645909	class_string.exe	9bbb6f427aa379c8
+0	129	7344427350372794	build.ninja	1a4642fc5656e9ca
 2	176	7332185227255834	CMakeFiles/class_string.dir/test.cpp.obj	785765f747829452
+5	338	7338344102334357	CMakeFiles/class_string.dir/my_string.cpp.obj	9c2406e19ebb722b
+1	548	7341977289615915	CMakeFiles/class_string.dir/main.cpp.obj	28550e7d7a45cafa
+0	374	7344427381436478	CMakeFiles/class_string.dir/my_string.cpp.obj	9c2406e19ebb722b
+375	492	7344427382586489	class_string.exe	76325d7d1e971fa5

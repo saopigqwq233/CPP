@@ -6,7 +6,10 @@
 using namespace std;
 #include "my_string.h"
 int main(){
-    my::test_string();
+    my::test2();
+
+
+
     return 0;
 }
 

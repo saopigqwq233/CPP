@@ -4,7 +4,7 @@
 
 #ifndef CLASS_STRING_MY_STRING_H
 #define CLASS_STRING_MY_STRING_H
-
+#include "errno.h"
 #include <cstring>
 #include <cassert>
 namespace my{
@@ -12,8 +12,11 @@ namespace my{
     public:
 //        迭代器
     typedef char* iterator;
-        iterator begin(){return _str;}
-        iterator end(){return _str+_size;}
+    typedef const char* const_iterator;
+    iterator begin(){return _str;}
+    iterator end(){return _str+_size;}
+    const_iterator begin()const{return _str;}
+    const_iterator end()const{return _str+_size;}
 //         成员
     private:
         char *_str;
@@ -38,7 +41,11 @@ namespace my{
         size_t capacity()const{return _capacity;}
         void reserve(size_t n){
             if(n>_capacity){
-                char *temp = new char[n];
+                char *temp = new char[n+1];
+                strcpy(temp,_str);
+                delete[] _str;
+                _str = temp;
+                _capacity = n;
             }
         }
 
@@ -68,33 +75,90 @@ namespace my{
             strcpy(_str+_size,str);
             _size += len;
         }
+        string&operator+=(char ch){
+            push_back(ch);
+            return *this;
+        }
+        string&operator+=(const char*str){
+            append(str);
+            return *this;
+        }
+        bool operator<(const string &s)const{
+            return strcmp(_str,s.c_str())<0;
+        }
+        bool operator==(const string &s)const{
+            return strcmp(_str,s.c_str())==0;
+        }
+        bool operator<=(const string &s)const{
+            return *this<s||*this==s;
+        }
+        bool operator>(const string &s)const{
+            return !(*this<=s);
+        }
+        bool operator>=(const string &s)const{
+            return !(*this<s);
+        }
+        bool operator!=(const string &s)const{
+            return !(*this==s);
+        }
+
+
+
     };
-
-
+//        io
+    ostream& operator<<(ostream&out,const string&s){
+        for (char i : s) {
+            out<<i;
+        }
+        return out;
+    }
+    istream& operator>>(istream&in,string&s){
+        char c;
+        cin>>c;
+        while (c!=' '&&c!='\n'){
+            s+=c;
+            in>>c;
+        }
+        return in;
+    }
 
 
 
 
     void test_string(){
         string s("hello world");
-        cout<<s.c_str()<<endl;
-        cout<<s.size()<<endl;
-        cout<<s.capacity()<<endl;
+//        cout<<s.c_str()<<endl;
+//        cout<<s.size()<<endl;
+//        cout<<s.capacity()<<endl;
+//
+//        for (int i = 0; i < s.size(); ++i) {
+//            cout<<s[i]<<" ";
+//        }
+//        cout<<endl;
+//
+//
+//        my::string::iterator it = s.begin();
+//        while (it!=s.end())
+//            cout<<*it++<<" ";
+//        cout<<endl;
+//        for(auto i:s){
+//            cout<<i<<" ";
+//        }
+//        cout<<endl;
+        string s1;
+        s1+='^';
+        s1+="kkkkkk";
+        s1 = s;
+        cout<<s<<endl;
+        cout<<s1<<endl;
+        cout<<(s>=s1)<<endl;
 
-        for (int i = 0; i < s.size(); ++i) {
-            cout<<s[i]<<" ";
-        }
-        cout<<endl;
 
-
-        my::string::iterator it = s.begin();
-        while (it!=s.end())
-            cout<<*it++<<" ";
-        cout<<endl;
-        for(auto i:s){
-            cout<<i<<" ";
-        }
-        cout<<endl;
+    }
+    void test2(){
+        string s;
+        cin>>s;
+        cout<<s;
     }
 }
 

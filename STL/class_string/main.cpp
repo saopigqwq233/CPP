@@ -197,6 +197,6 @@ void test12(){
     printf("%s\n",s1.c_str());
 }
 int main(){
-    test12();
+    test10();
     return 0;
 }
