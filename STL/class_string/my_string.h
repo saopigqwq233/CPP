@@ -75,6 +75,10 @@ namespace my{
             strcpy(_str+_size,str);
             _size += len;
         }
+        void clear(){
+            _size=0;
+            _str[0]='\0';
+        }
         string&operator+=(char ch){
             push_back(ch);
             return *this;
@@ -113,11 +117,12 @@ namespace my{
         return out;
     }
     istream& operator>>(istream&in,string&s){
+        s.clear();
         char c;
-        cin>>c;
+        c=in.get();
         while (c!=' '&&c!='\n'){
             s+=c;
-            in>>c;
+            c=in.get();
         }
         return in;
     }
