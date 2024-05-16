@@ -6,7 +6,11 @@
 #define CLASS_STRING_MY_STRING_H
 #include "errno.h"
 #include <cstring>
+#include "string.h"
 #include <cassert>
+#include "cstdlib"
+
+size_t npos=1024;
 namespace my{
     class string{
     public:
@@ -107,7 +111,36 @@ namespace my{
         }
 
 
-
+        void insert(size_t pos,const char* str){
+            size_t len = strlen(str);
+            if(_size+len>_capacity){
+                reserve(_size+len);
+            }
+            //挪动数据
+            int end = _size;
+            while (end>=(int)pos){
+                _str[end+len] = _str[end];
+                --end;
+            }
+            strncpy(_str+pos,str,len);
+            _size += len;
+        }
+        void erase(size_t pos,size_t len=npos){
+            assert(pos<_size);
+            if(len == npos||pos+len>=_size){
+                _str[pos] = '\0';
+                _size = pos;
+            }
+            else
+            {
+                size_t begin = pos + len;
+                while (begin<=_size){
+                    _str[begin-len] = _str[begin];
+                    ++begin;
+                }
+                _size-=len;
+            }
+        }
     };
 //        io
     ostream& operator<<(ostream&out,const string&s){
@@ -163,7 +196,10 @@ namespace my{
     void test2(){
         string s;
         cin>>s;
-        cout<<s;
+        s.insert(3,"fuckyou");
+        cout<<s<<endl;
+        s.erase(2,5);
+        cout<<s<<endl;
     }
 }
 
