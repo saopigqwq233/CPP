@@ -17,3 +17,22 @@
 const   
 ##### 迭代器，const修饰类型T
 ##### [] 访问也需要实现
+
+reserve
+
+resize 缺省值
+内置类型 也有构造  
+
+### 迭代器失效  
+#### insert(iterator pos,const T& val)
+注意insert内扩容后pos未更新造成野指针问题
+一方面，函数内部若pos未更新*pos越界
+另一方面，函数外部，实参失效
+不需要在实现函数时使用迭代器引用，传值调用会存在零时变量具有常性导致编译不通过  
+如  insert(s.begin(),1)  s.begin()返回的是临时变量
+
+
+#### erase
+vs2019强制检查 erase后it失效，访问就报错
+
+
