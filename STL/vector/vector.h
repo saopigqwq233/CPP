@@ -8,13 +8,51 @@
 #include <cstddef>
 #include <cassert>
 #include <string>
-
+template<typename Iterator,class Ptr,class Ref>
+struct Reverseiterator{
+public:
+    typedef Reverseiterator<Iterator,Ptr,Ref> Self;
+    Reverseiterator(Iterator it):_it(it){}
+    Self& operator++(){
+        return --_it;
+    }
+    Self& operator--(){
+        return ++_it;
+    }
+    Self operator++(int){
+        Self tmp(_it);
+        --_it;
+        return tmp;
+    }
+    Self operator--(int){
+        Self tmp(_it);
+        ++_it;
+        return tmp;
+    }
+    Ref operator*()const{
+        return *_it;
+    }
+    Ptr operator->()const{
+        return _it.operator->();
+    }
+    bool operator==(const Self&it){
+        return _it==it._it;
+    }
+    bool operator!=(const Self&it){
+        return _it!=it._it;
+    }
+private:
+    Iterator _it;
+};
 namespace lwh{
     template<typename T>
     class vector{
     public:
         typedef T* iterator;
         typedef const T* const_iterator;
+
+        typedef Reverseiterator<iterator,T*,T&> reverse_iterator;
+        typedef Reverseiterator<const_iterator ,const T*,const T&> const_reverse_iterator;
         //构造后，数据空间均为空
         vector():
         _start(nullptr),
@@ -149,11 +187,14 @@ namespace lwh{
 //迭代器
         iterator& begin(){return _start;}
         iterator& end(){return _finish;}
-//        iterator& begin()const{return _start;}
-//        iterator& end()const{return _finish;}
-        const_iterator begin()const{return _start;}
-        const_iterator end()const{return _finish;}
 
+        const_iterator cbegin()const{return _start;}
+        const_iterator cend()const{return _finish;}
+
+        reverse_iterator rbegin(){return reverse_iterator(end()-1);}
+        reverse_iterator rend(){return reverse_iterator(begin()-1);}
+        const_reverse_iterator crbegin()const{return const_reverse_iterator(cend()-1);}
+        const_reverse_iterator crend()const{return const_reverse_iterator (cbegin()-1);}
     private:
         iterator _start;
         iterator _finish;

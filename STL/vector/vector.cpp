@@ -62,17 +62,18 @@ void test_vector2(){
     cout<<endl;
 }
 void test_vector3(){
-    lwh::vector<string>s;
-    s.push_back("123qqq");
-    s.push_back("123qqq");
-    for(auto ch:s){
-        cout<<ch<<endl;
+    lwh::vector<int> s;
+    s.push_back(1);
+    s.push_back(2);
+    s.push_back(3);
+    s.push_back(4);
+    s.push_back(5);
+    auto it = s.crbegin();
+    while (it!=s.crend()){
+        cout<<*it<<' ';
+        it++;
     }
-    lwh::vector<string>v1(s.begin(),s.end());
 
-    for(auto ch:v1){
-        cout<<ch<<endl;
-    }
 }
 int main(){
     test_vector3();

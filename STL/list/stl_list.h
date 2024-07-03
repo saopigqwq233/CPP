@@ -198,12 +198,51 @@ template<class T,class Ptr,class Ref>
             return _node!=x._node;
         }
     };
+template<typename Iterator,class Ptr,class Ref>
+struct Reverseiterator{
+public:
+    typedef Reverseiterator<Iterator,Ptr,Ref> Self;
+    Reverseiterator(Iterator it):_it(it){}
+    Self& operator++(){
+        return --_it;
+    }
+    Self& operator--(){
+        return ++_it;
+    }
+    Self operator++(int){
+        Self tmp(_it);
+        --_it;
+        return tmp;
+    }
+    Self operator--(int){
+        Self tmp(_it);
+        ++_it;
+        return tmp;
+    }
+    Ref operator*()const{
+        return *_it;
+    }
+    Ptr operator->()const{
+        return _it.operator->();
+    }
+    bool operator==(const Self&it){
+        return _it==it._it;
+    }
+    bool operator!=(const Self&it){
+        return _it!=it._it;
+    }
+private:
+    Iterator _it;
+};
 template<class T>
     class list{
         typedef list_node<T> Node;
     public:
         typedef __list_iterator<T,T*,T&> iterator;
         typedef __list_iterator<T,const T*,const T&> const_iterator;
+
+        typedef Reverseiterator<iterator,T*,T&> reverse_iterator;
+        typedef Reverseiterator<const_iterator,const T*,const T&> const_reverse_iterator;
         void empty_init(){
             _head = new Node;
             _head->_prev = _head->_next = _head;
@@ -232,8 +271,14 @@ template<class T>
         }
         iterator begin(){return _head->_next;}
         iterator end(){return _head;}
-        const_iterator begin()const{return _head->_next;}
-        const_iterator end()const{return _head;}
+        const_iterator cbegin()const{return _head->_next;}
+        const_iterator cend()const{return _head;}
+
+        reverse_iterator rbegin(){return reverse_iterator(--end());}
+        reverse_iterator rend(){return reverse_iterator(end());}
+        const_reverse_iterator crbegin()const{return const_reverse_iterator(--cend());}
+        const_reverse_iterator crend()const{return const_reverse_iterator(cend());}
+
         iterator insert(const iterator& pos,const T& val){
             Node* new_node = new Node(val);
             Node* cur = pos._node;
