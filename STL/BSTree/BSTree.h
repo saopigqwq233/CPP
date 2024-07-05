@@ -8,42 +8,78 @@
 #include <iostream>
 
 using namespace std;
-
+namespace lwh1
+{
 template<class Key>
-struct BSTreeNode{
+struct BSTreeNode {
 
     typedef BSTreeNode<Key> Self;
     Self *_left;
     Self *_right;
-
-    BSTreeNode(const Key&key)
-    :_key(key),
-    _left(nullptr),
-    _right(nullptr)
-    {}
-
     Key _key;
+    BSTreeNode(const Key &key)
+            : _key(key),
+              _left(nullptr),
+              _right(nullptr) {}
+
+
 };
+
 template<class Key>
-class BSTree{
-public:
+class BSTree {
     typedef BSTreeNode<Key> Node;
-    bool _insertR(Node*&root,const Key&key){
-        if(root== nullptr) {
+    typedef BSTree<Key> Self;
+
+    Node *Copy(Node *root) {
+        if (root == nullptr)
+            return nullptr;
+        Node *newRoot = new Node(root->_key);
+        newRoot->_left = Copy(root->_left);
+        newRoot->_right = Copy(root->_right);
+        return newRoot;
+    }
+
+public:
+    BSTree() {}
+
+    BSTree(const Self &t) {
+        _root = Copy(t._root);
+    }
+
+
+    void Destroy(Node *&root) {
+        if (root == nullptr)
+            return;
+
+        Destroy(root->_left);
+        Destroy(root->_right);
+        delete root;
+        root = nullptr;
+    }
+
+    ~BSTree() {
+        Destroy(_root);
+
+    }
+
+
+    bool _insertR(Node *&root, const Key &key) {
+        if (root == nullptr) {
             root = new Node(key);
             return true;
         }
 
-        if(key<root->_key)
-            _insertR(root->_left,key);
-        else if(key>root->_key)
-            _insertR(root->_right,key);
+        if (key < root->_key)
+            _insertR(root->_left, key);
+        else if (key > root->_key)
+            _insertR(root->_right, key);
         else
             return false;
 
         return true;
     }
-    bool insert(const Key&key){
+
+    bool insert(const Key &key) {
 //        if(!_root){
 //            _root = new Node(key);
 //            return true;
@@ -66,21 +102,24 @@ public:
 //        else if(key>parent->_key)
 //            parent->_right = new Node(key);
 //        return true;
-        return _insertR(_root,key);
+        return _insertR(_root, key);
     }
-    void _InOrder(Node* root){
-        if(!root)
+
+    void _InOrder(Node *root) {
+        if (!root)
             return;
-        Node* cur = root;
+        Node *cur = root;
         _InOrder(root->_left);
-        cout<<root->_key<<' ';
+        cout << root->_key << ' ';
         _InOrder(root->_right);
     }
-    void InOrder(){
+
+    void InOrder() {
         _InOrder(_root);
-        cout<<endl;
+        cout << endl;
     }
-    bool Find(const Key&key){
+
+    bool Find(const Key &key) {
 //        Node* cur = _root;
 //        while (cur){
 //            if(key<cur->_key)
@@ -91,45 +130,43 @@ public:
 //                return true;
 //        }
 //        return false;
-        return _FindR(_root,key);
+        return _FindR(_root, key);
     }
-    bool _FindR(Node*root,const Key&key){
-        if(root== nullptr)
+
+    bool _FindR(Node *root, const Key &key) {
+        if (root == nullptr)
             return false;
-        if(root->_key==key)
+        if (root->_key == key)
             return true;
-        else{
-            return _FindR(root->_left,key)|| _FindR(root->_right,key);
+        else {
+            return _FindR(root->_left, key) || _FindR(root->_right, key);
         }
     }
-    bool _eraseR(Node*&root,const Key&key){
-         if(root== nullptr)
-             return false;
-         else if(key<root->_key){
-             return _eraseR(root->_left,key);
-         }
-         else if(key>root->_key){
-             return _eraseR(root->_right,key);
-         }
-         else{
-             if(root->_left== nullptr){
-                 Node *del = root;
-                 root = root->_right;
-                 delete del;
-             }
-             else if(root->_right== nullptr){
-                 Node *del = root;
-                 root = root->_left;
-                 delete del;
-             }
-             else{
+
+    bool _eraseR(Node *&root, const Key &key) {
+        if (root == nullptr)
+            return false;
+        else if (key < root->_key) {
+            return _eraseR(root->_left, key);
+        } else if (key > root->_key) {
+            return _eraseR(root->_right, key);
+        } else {
+            if (root->_left == nullptr) {
+                Node *del = root;
+                root = root->_right;
+                delete del;
+            } else if (root->_right == nullptr) {
+                Node *del = root;
+                root = root->_left;
+                delete del;
+            } else {
                 Node *parent = root;
                 Node *subleft = root->_right;
-                 while (subleft->_left){
-                     parent = subleft;
-                     subleft = subleft->_left;
-                 }
-                 swap(subleft->_key,root->_key);
+                while (subleft->_left) {
+                    parent = subleft;
+                    subleft = subleft->_left;
+                }
+                swap(subleft->_key, root->_key);
 //                 if(parent->_left==subleft){
 //                     parent->_left = subleft->_right;
 //                 }
@@ -137,14 +174,14 @@ public:
 //                     parent->_right = subleft->_right;
 //                 }
 //                 delete subleft;
-                 _eraseR(root->_right,key);
-             }
-             return true;
-         }
+                _eraseR(root->_right, key);
+            }
+            return true;
+        }
     }
 
 
-    bool erase(const Key&key){
+    bool erase(const Key &key) {
 //        Node *cur = _root;
 //        Node *parent = cur;
 //        while (cur){
@@ -204,18 +241,30 @@ public:
 //            }
 //        }
 //        return false;
-        return _eraseR(_root,key);
+        return _eraseR(_root, key);
     }
 
-
-
+    Self &operator=(Self t) {
+        swap(_root, t._root);
+        return *this;
+    }
 
 
 private:
 
-    Node *_root= nullptr;
+    Node *_root = nullptr;
 
 };
+}
+
+namespace key_value{
+
+
+
+}
+
+
+
 
 
 #endif //BSTREE_BSTREE_H

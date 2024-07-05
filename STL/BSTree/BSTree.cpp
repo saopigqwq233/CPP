@@ -4,7 +4,7 @@
 
 #include "BSTree.h"
 int main(){
-    BSTree<int> s;
+    lwh1::BSTree<int> s;
     s.insert(1);
 
     s.insert(4);
@@ -18,7 +18,7 @@ int main(){
     s.insert(8);
 
     s.InOrder();
-
+    auto p (s);
 //    cout<<s.Find(10)<<' ';
 
 //    s.erase(10);
@@ -33,6 +33,13 @@ int main(){
     s.erase(13);
     s.InOrder();
 
+    s.erase(6);
+    s.InOrder();
+
+    s.erase(7);
+    s.InOrder();
+    p=s;
+    p.InOrder();
     return 0;
 
 }
