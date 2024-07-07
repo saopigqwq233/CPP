@@ -21,8 +21,6 @@ struct BSTreeNode {
             : _key(key),
               _left(nullptr),
               _right(nullptr) {}
-
-
 };
 
 template<class Key>
@@ -42,7 +40,7 @@ class BSTree {
 public:
     BSTree() {}
 
-    BSTree(const Self &t) {
+    BSTree(const Self &t) {//拷贝构造
         _root = Copy(t._root);
     }
 
@@ -59,7 +57,6 @@ public:
 
     ~BSTree() {
         Destroy(_root);
-
     }
 
 
@@ -199,8 +196,6 @@ public:
 //                if(cur->_left== nullptr){//左子树为空
 //                    if(cur==_root)
 //                        _root = cur->_right;
-//
-//
 //                    if(cur==parent->_left)
 //                        parent->_left = cur->_right;
 //                    else{
