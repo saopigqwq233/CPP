@@ -13,7 +13,7 @@ using namespace std;
 enum COLOR{RED,BLACK};
 
 
-template<class Key,class Value>
+template<class T>
 struct RBNode{
     typedef RBNode<Key,Value> Self;
 
