@@ -1,12 +1,14 @@
 //
 // Created by Administrator on 24-7-7.
 //
-//æ’å…¥èŠ‚ç‚¹çˆ¶äº²æ˜¯é»‘è‰²ï¼Œä¸ç”¨ç®¡
-//1.curä¸ºçº¢,pä¸ºçº¢ï¼Œgä¸ºé»‘ï¼Œuå­˜åœ¨ä¸ºçº¢---ã€‹pã€uæ”¹é»‘ï¼Œgæ”¹çº¢ï¼ŒæŠŠgä½œä¸ºcurå¾€ä¸Šç»§ç»­æ£€æŸ¥
-//2.curä¸ºçº¢,pä¸ºçº¢,gä¸ºé»‘ï¼Œuå­˜åœ¨ä¸ºé»‘
+//²åÈë½Úµã¸¸Ç×ÊÇºÚÉ«£¬²»ÓÃ¹Ü
+//1.curÎªºì,pÎªºì£¬gÎªºÚ£¬u´æÔÚÎªºì---¡·p¡¢u¸ÄºÚ£¬g¸Äºì£¬°Ñg×÷ÎªcurÍùÉÏ¼ÌĞø¼ì²é
+//2.curÎªºì,pÎªºì,gÎªºÚ£¬u´æÔÚÎªºÚ
 #ifndef SET_MAP_RBTREE_H
 #define SET_MAP_RBTREE_H
 #include "iostream"
+#include "string"
+
 using namespace std;
 
 enum COLOR{RED,BLACK};
@@ -31,7 +33,52 @@ struct RBNode{
 template<class T>
 struct __TreeIterator{
 
+    typedef RBNode<T> Node;
+    typedef __TreeIterator<T> Self;
+    __TreeIterator(Node* node):_node(node){}
 
+    Self& operator++(){
+        //×ó×ÓÊ÷¡¢¸ù¡¢ÓÒ×ÓÊ÷
+
+        if(_node->_right){
+            Node*cur = _node->_right;;
+            while (cur->_left){
+                cur = cur->_left;
+            }
+            _node = cur;
+        }
+        else{
+            Node *cur = _node;
+            Node *parent = cur->_parent;
+
+            while (parent&&cur==parent->_right){
+                cur = parent;
+                parent = cur->_parent;
+            }
+            _node = parent;
+        }
+        return *this;
+    }
+    T& operator*(){
+        return _node->_data;
+    }
+    T* operator->(){
+        return &_node->_data;
+    }
+    bool operator!=(const Self& s)
+    {
+        return _node != s._node;
+    }
+
+    bool operator==(const Self& s)
+    {
+        return _node == s._node;
+    }
+
+
+
+private:
+    Node* _node;
 
 };
 
@@ -41,11 +88,12 @@ struct __TreeIterator{
 
 template<class Key,class T,class KeyofT>
 class RBTree{
-    typedef RBTree<Key,T,KeyofT> Self;
     typedef RBNode<T> Node;
     KeyofT kot;
+
 public:
-    bool insert(T&data){
+    typedef __TreeIterator<T> iterator;
+    bool insert(const T&data){
         if(_root== nullptr) { _root = new Node(data);
             _root->_color=BLACK;
             return true;}
@@ -53,9 +101,9 @@ public:
         Node* parent = nullptr;
         while (cur){
             parent = cur;
-            if(kot(cur->data) > kot(data))
+            if(kot(cur->_data) > kot(data))
                 cur = cur->_left;
-            else if(kot(cur->_data) < kot(data.first))
+            else if(kot(cur->_data) < kot(data))
                 cur = cur->_right;
             else{
                 return false;
@@ -67,12 +115,9 @@ public:
             parent->_left = cur;
         else
             parent->_right = cur;
-        if(data.first == 9){
-            int a = 0;
-        }
         while (parent&&parent->_color!=BLACK){
             Node* g = parent->_parent;
-            if(parent==g->_left){//çˆ¶äº²æ˜¯çˆ·çš„å·¦å­æ ‘
+            if(parent==g->_left){//¸¸Ç×ÊÇÒ¯µÄ×ó×ÓÊ÷
                 Node* u = g->_right;
                 if(u&&u->_color==RED) {
                     parent->_color = BLACK;
@@ -133,7 +178,21 @@ public:
         _InOrder(_root);
         cout << endl;
     }
+    iterator begin()
+    {
+        Node* cur = _root;
+        while (cur && cur->_left)
+        {
+            cur = cur->_left;
+        }
 
+        return iterator(cur);
+    }
+
+    iterator end()
+    {
+        return nullptr;
+    }
 
 private:
     void _InOrder(Node* root)
@@ -142,7 +201,8 @@ private:
             return;
 
         _InOrder(root->_left);
-        cout << KeyofT(root->_data) << " ";
+
+        cout << kot(root->_data) << " ";
         _InOrder(root->_right);
     }
     void RotatoL(Node* parent){
