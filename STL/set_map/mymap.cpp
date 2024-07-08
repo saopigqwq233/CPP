@@ -13,7 +13,6 @@ int main(){
     s.insert(make_pair(9,string("ea")));
     s.insert(make_pair(8,string("xa")));
     s.insert(make_pair(3,string("qa")));
-
     for(auto &e:s){
         cout<<e.first<<':'<<e.second<<endl;
     }
