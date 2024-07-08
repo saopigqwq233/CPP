@@ -7,7 +7,6 @@
 #ifndef SET_MAP_RBTREE_H
 #define SET_MAP_RBTREE_H
 #include "iostream"
-
 using namespace std;
 
 enum COLOR{RED,BLACK};
@@ -15,45 +14,60 @@ enum COLOR{RED,BLACK};
 
 template<class T>
 struct RBNode{
-    typedef RBNode<Key,Value> Self;
+    typedef RBNode<T> Self;
 
     Self *_parent,*_left,*_right;
-    pair<Key,Value> _kv;
+    T _data;
     COLOR _color;
 
-    RBNode(const pair<Key,Value>& x):
-            _kv(x),_parent(nullptr),
+    RBNode(const T& x):
+            _data(x),_parent(nullptr),
             _left(nullptr),_right(nullptr),
             _color(RED){}
 };
-template<class Key,class Value>
+
+
+
+template<class T>
+struct __TreeIterator{
+
+
+
+};
+
+
+
+
+
+template<class Key,class T,class KeyofT>
 class RBTree{
-    typedef RBTree<Key,Value> Self;
-    typedef RBNode<Key,Value> Node;
+    typedef RBTree<Key,T,KeyofT> Self;
+    typedef RBNode<T> Node;
+    KeyofT kot;
 public:
-    bool insert(const pair<Key,Value>&x){
-        if(_root== nullptr) { _root = new Node(x);
+    bool insert(T&data){
+        if(_root== nullptr) { _root = new Node(data);
             _root->_color=BLACK;
             return true;}
         Node* cur = _root;
         Node* parent = nullptr;
         while (cur){
             parent = cur;
-            if(cur->_kv.first > x.first)
+            if(kot(cur->data) > kot(data))
                 cur = cur->_left;
-            else if(cur->_kv.first < x.first)
+            else if(kot(cur->_data) < kot(data.first))
                 cur = cur->_right;
             else{
                 return false;
             }
         }
-        cur = new Node(x);
+        cur = new Node(data);
         cur->_parent=parent;
-        if(x.first<parent->_kv.first)
+        if(kot(data) < kot(parent->_data))
             parent->_left = cur;
         else
             parent->_right = cur;
-        if(x.first==9){
+        if(data.first == 9){
             int a = 0;
         }
         while (parent&&parent->_color!=BLACK){
@@ -128,7 +142,7 @@ private:
             return;
 
         _InOrder(root->_left);
-        cout << root->_kv.first << " ";
+        cout << KeyofT(root->_data) << " ";
         _InOrder(root->_right);
     }
     void RotatoL(Node* parent){
