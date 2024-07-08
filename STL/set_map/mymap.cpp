@@ -19,5 +19,4 @@ int main(){
     }
     cout<<s.Find(9).second<<s.Find(9).first->second<<endl;
     return 0;
-
 }
