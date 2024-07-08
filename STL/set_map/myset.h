@@ -30,12 +30,16 @@ namespace lwh {
         iterator end(){
             return _tree.end();
         }
-        bool insert(const K&k){
+        pair<iterator,bool> insert(const K&k){
             return _tree.insert(k);
         }
         void InOrder(){
             _tree.InOrder();
         }
+        pair<iterator,bool> Find(const K&key){
+            return _tree.Find(key);
+        }
+
     private:
 
         Base _tree;

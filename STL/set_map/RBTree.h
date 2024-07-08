@@ -93,10 +93,10 @@ class RBTree{
 
 public:
     typedef __TreeIterator<T> iterator;
-    bool insert(const T&data){
+    pair<iterator,bool> insert(const T&data){
         if(_root== nullptr) { _root = new Node(data);
             _root->_color=BLACK;
-            return true;}
+            return make_pair(_root,true);}
         Node* cur = _root;
         Node* parent = nullptr;
         while (cur){
@@ -106,7 +106,7 @@ public:
             else if(kot(cur->_data) < kot(data))
                 cur = cur->_right;
             else{
-                return false;
+                return make_pair(iterator(cur), false);
             }
         }
         cur = new Node(data);
@@ -115,6 +115,7 @@ public:
             parent->_left = cur;
         else
             parent->_right = cur;
+        auto ret = make_pair(cur, true);
         while (parent&&parent->_color!=BLACK){
             Node* g = parent->_parent;
             if(parent==g->_left){//¸¸Ç×ÊÇÒ¯µÄ×ó×ÓÊ÷
@@ -170,7 +171,7 @@ public:
             }
         }
         _root->_color=BLACK;
-        return true;
+        return ret;
 
     }
     void InOrder()
@@ -193,8 +194,20 @@ public:
     {
         return nullptr;
     }
-
+    pair<iterator,bool>Find(const Key&key){
+        return _Find(_root,key);
+    }
 private:
+    pair<iterator,bool>_Find(Node*root,const Key&key){
+        if(root== nullptr)
+            return make_pair(nullptr,false);
+        else if(kot(root->_data)<key)
+            return _Find(root->_right,key);
+        else if(kot(root->_data)>key)
+            return _Find(root->_left,key);
+        else
+            return make_pair(iterator(root), true);
+    }
     void _InOrder(Node* root)
     {
         if (root == nullptr)

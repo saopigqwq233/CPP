@@ -28,11 +28,14 @@ namespace lwh{
         {
             return _tree.end();
         }
-        bool insert(const pair<K,V>&d){
+        pair<iterator,bool> insert(const pair<K,V>&d){
             return _tree.insert(d);
         }
         void InOrder(){
             _tree.InOrder();
+        }
+        pair<iterator,bool> Find(const K&key){
+            return _tree.Find(key);
         }
 
     private:
