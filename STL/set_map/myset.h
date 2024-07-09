@@ -18,7 +18,7 @@ namespace lwh {
 
 
         typedef set<K> Self;
-        typedef RBTree<K,K,KeyofT> Base;
+        typedef RBTree<K,const K,KeyofT> Base;
 
 
 
