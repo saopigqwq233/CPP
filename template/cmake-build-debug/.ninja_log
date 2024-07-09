@@ -1,0 +1,6 @@
+# ninja log v6
+3	193	7417035561956591	CMakeFiles/template.dir/模板特化.cpp.obj	26730e08e1e44e7b
+1	229	7417035481865882	CMakeFiles/template.dir/main.cpp.obj	d387abad1457b398
+3	219	7417035810203191	CMakeFiles/template.dir/template_spe.cpp.obj	490856425075c84c
+2	29	7417036174526132	CMakeFiles/template.dir/main.cpp.obj	d387abad1457b398
+30	76	7417036174806133	template.exe	d4361e51d61c5f62

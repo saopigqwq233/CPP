@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="4c246d27-352e-4b9d-a796-57c7b6ef2d9c" name="Tencentcloud">
+        <fileTransfer accessType="SFTP" host="193.112.206.69" port="22" sshConfigId="24dd82d6-d5b0-4190-972f-14637911fb08" sshConfig="root@193.112.206.69:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

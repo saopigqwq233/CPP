@@ -1,0 +1,3 @@
+D:/BITE/CPP/template/cmake-build-debug/CMakeFiles/template.dir
+D:/BITE/CPP/template/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/BITE/CPP/template/cmake-build-debug/CMakeFiles/rebuild_cache.dir
