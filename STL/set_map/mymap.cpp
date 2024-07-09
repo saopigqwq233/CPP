@@ -16,6 +16,10 @@ int main(){
     for(auto &e:s){
         cout<<e.first<<':'<<e.second<<endl;
     }
-    cout<<s.Find(9).second<<s.Find(9).first->second<<endl;
-    return 0;
+//    cout<<s.Find(9).second<<s.Find(9).first->second<<endl;
+    s[10]="aaa";
+    s[1]="a";
+    cout<<s[1]<<endl;
+
+return 0;
 }

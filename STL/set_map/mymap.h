@@ -37,6 +37,10 @@ namespace lwh{
         pair<iterator,bool> Find(const K&key){
             return _tree.Find(key);
         }
+        V& operator[](const K&key){
+            auto ret = insert(make_pair(key,V()));
+            return ret.first->second;
+        }
 
     private:
         Base _tree;
