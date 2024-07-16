@@ -27,7 +27,7 @@ namespace lwh{
         HashTable(){
             _tables.resize(10);
         }
-        bool Insert(const std::pair<K,V>&kv){
+        bool Insert(const std::pair<const K,const V>&kv){
             if(_n*7/_tables.size()<0.7){
             //扩容不能直接resize，以前的EXIST结点的数据位子是旧的size,
             // 需要重新映射
