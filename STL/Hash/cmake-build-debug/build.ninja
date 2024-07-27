@@ -55,12 +55,6 @@ build CMakeFiles/Hash.dir/main.cpp.obj: CXX_COMPILER__Hash_unscanned_Debug D$:/B
   OBJECT_DIR = CMakeFiles\Hash.dir
   OBJECT_FILE_DIR = CMakeFiles\Hash.dir
 
-build CMakeFiles/Hash.dir/测试map_set_hash/test.cpp.obj: CXX_COMPILER__Hash_unscanned_Debug D$:/BITE/CPP/STL/Hash/测试map_set_hash/test.cpp || cmake_object_order_depends_target_Hash
-  DEP_FILE = CMakeFiles\Hash.dir\测试map_set_hash\test.cpp.obj.d
-  FLAGS = -g -std=gnu++11 -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles\Hash.dir
-  OBJECT_FILE_DIR = CMakeFiles\Hash.dir\测试map_set_hash
-
 build CMakeFiles/Hash.dir/HashTable.cpp.obj: CXX_COMPILER__Hash_unscanned_Debug D$:/BITE/CPP/STL/Hash/HashTable.cpp || cmake_object_order_depends_target_Hash
   DEP_FILE = CMakeFiles\Hash.dir\HashTable.cpp.obj.d
   FLAGS = -g -std=gnu++11 -fdiagnostics-color=always
@@ -75,7 +69,7 @@ build CMakeFiles/Hash.dir/HashTable.cpp.obj: CXX_COMPILER__Hash_unscanned_Debug 
 #############################################
 # Link the executable Hash.exe
 
-build Hash.exe: CXX_EXECUTABLE_LINKER__Hash_Debug CMakeFiles/Hash.dir/main.cpp.obj CMakeFiles/Hash.dir/测试map_set_hash/test.cpp.obj CMakeFiles/Hash.dir/HashTable.cpp.obj
+build Hash.exe: CXX_EXECUTABLE_LINKER__Hash_Debug CMakeFiles/Hash.dir/main.cpp.obj CMakeFiles/Hash.dir/HashTable.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\Hash.dir

@@ -12,7 +12,7 @@ namespace lwh{
     enum Status{
         EMPTY,
         EXIST,
-        DELETE
+        DELETE//这个状态是必须的，否则删除一个点滞空后会导致后面的结点找不到
     };
 
     template<class K,class V>
@@ -24,19 +24,32 @@ namespace lwh{
     template<class K,class V>
     class HashTable{
     public:
-        HashTable(){
+        HashTable():_n(0){
             _tables.resize(10);
         }
-        bool Insert(const std::pair<const K,const V>&kv){
-            if(_n*7/_tables.size()<0.7){
+        HashData<K,V>*Find(const K&key){
+            size_t hashi = key%_tables.size();
+            while (_tables[hashi]._s!=EMPTY){
+                if(_tables[hashi]._s!=EMPTY&&_tables[hashi]._kv.first==key){
+                    return &_tables[hashi];
+                }
+                ++hashi;
+                hashi%=_tables.size();
+            }
+            return nullptr;
+        }
+        bool Insert(const std::pair<K,V>&kv){
+            if(Find(kv.first))
+                return false;
+            if(_n*10/_tables.size()>7){
             //扩容不能直接resize，以前的EXIST结点的数据位子是旧的size,
             // 需要重新映射
-                int newSize = _tables.size();
+                int newSize = _tables.size()*2;
                 HashTable<K,V> newHT;
                 newHT._tables.resize(newSize);
                 for(size_t i = 0;i<_tables.size();i++){
                     if(_tables[i]._s==EXIST){
-                        newHT._tables.insert(_tables[i]._kv);
+                        newHT.Insert(_tables[i]._kv);
                     }
                 }
                 _tables.swap(newHT._tables);
@@ -47,12 +60,22 @@ namespace lwh{
                 hashi+=1;
                 hashi%=_tables.size();
             }
-            _tables[hashi]._kv=kv;
+            _tables[hashi]._kv.first=kv.first;
+            _tables[hashi]._kv.second=kv.second;
             _tables[hashi]._s=EXIST;
             ++_n;
             return true;
         }
-
+        bool Erase(const K&key){
+            HashData<K,V>* ret = Find(key);
+            if(ret){
+                ret->_s=DELETE;
+                --_n;
+                return true;
+            }
+            else
+                return false;
+        }
 
 
     private:
