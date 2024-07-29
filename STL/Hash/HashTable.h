@@ -7,7 +7,6 @@
 #include "iostream"
 #include "vector"
 
-
 namespace lwh{
     enum Status{
         EMPTY,
@@ -76,17 +75,24 @@ namespace lwh{
             else
                 return false;
         }
-
+    void Print(){
+            for(int i=0;i<_tables.size();++i){
+                if(_tables[i]._s!=EXIST){
+                    std::cout<<'['<<i<<"] "<<std::endl;
+                }
+                else{
+                    std::cout<<'['<<i<<"] "<<_tables[i]._kv.first<<std::endl;
+                }
+            }
+        }
 
     private:
         std::vector<HashData<K,V>> _tables;
         int _n;//负载因子
     };
+}
 
-
-
-
-
+namespace hashbucket{
 
 }
 

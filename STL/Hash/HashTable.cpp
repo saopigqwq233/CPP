@@ -9,5 +9,6 @@ int main() {
     for(auto i:a){
         h.Insert(std::pair<int,int>(i,i));
     }
+    h.Print();
     return 0;
 }
