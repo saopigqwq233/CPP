@@ -73,9 +73,15 @@ void test_vector3(){
         cout<<*it<<' ';
         it++;
     }
-
+}
+void test_vector4(){
+    auto il = {1,2,3,4};
+    lwh::vector<int> v = {1,2,3,4,5};
+    for(auto e:v){
+        cout<<e<<' ';
+    }
 }
 int main(){
-    test_vector3();
+    test_vector4();
     return 0;
 }

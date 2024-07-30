@@ -98,6 +98,15 @@ namespace lwh{
                 push_back(val);
             }
         }
+        vector(std::initializer_list<T>il):
+            _start(nullptr),
+            _finish(nullptr),
+            _endofstorage(nullptr){
+            reserve(il.size());
+            for(auto&e:il){
+                push_back(e);
+            }
+        }
         void swap(vector<T>&v){
             std::swap(_start,v._start);
             std::swap(_finish,v._finish);
