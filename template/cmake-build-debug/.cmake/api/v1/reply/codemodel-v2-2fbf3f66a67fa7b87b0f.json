@@ -49,8 +49,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "D:/BITE/CPP/template/cmake-build-debug",
-		"source" : "D:/BITE/CPP/template"
+		"build" : "C:/bite/cpp/CPP/template/cmake-build-debug",
+		"source" : "C:/bite/cpp/CPP/template"
 	},
 	"version" : 
 	{

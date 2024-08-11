@@ -49,8 +49,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "D:/BITE/CPP/STL/priority_queue/cmake-build-debug",
-		"source" : "D:/BITE/CPP/STL/priority_queue"
+		"build" : "C:/bite/cpp/CPP/STL/priority_queue/cmake-build-debug",
+		"source" : "C:/bite/cpp/CPP/STL/priority_queue"
 	},
 	"version" : 
 	{
