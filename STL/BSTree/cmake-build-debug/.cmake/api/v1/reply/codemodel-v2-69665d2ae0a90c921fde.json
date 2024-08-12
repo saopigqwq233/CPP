@@ -49,8 +49,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "D:/BITE/CPP/STL/BSTree/cmake-build-debug",
-		"source" : "D:/BITE/CPP/STL/BSTree"
+		"build" : "C:/bite/cpp/CPP/STL/BSTree/cmake-build-debug",
+		"source" : "C:/bite/cpp/CPP/STL/BSTree"
 	},
 	"version" : 
 	{
