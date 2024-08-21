@@ -56,10 +56,10 @@ RM = C:\Users\liu15\AppData\Local\Programs\CLion\bin\cmake\win\x64\bin\cmake.exe
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\bite\cpp\CPP\STL\priority_queue
+CMAKE_SOURCE_DIR = C:\bite\cpp\CPP\STL\list
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\bite\cpp\CPP\STL\priority_queue\cmake-build-debug
+CMAKE_BINARY_DIR = C:\bite\cpp\CPP\STL\list\cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -86,9 +86,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\bite\cpp\CPP\STL\priority_queue\cmake-build-debug\CMakeFiles C:\bite\cpp\CPP\STL\priority_queue\cmake-build-debug\\CMakeFiles\progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\bite\cpp\CPP\STL\list\cmake-build-debug\CMakeFiles C:\bite\cpp\CPP\STL\list\cmake-build-debug\\CMakeFiles\progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\bite\cpp\CPP\STL\priority_queue\cmake-build-debug\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\bite\cpp\CPP\STL\list\cmake-build-debug\CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -116,41 +116,41 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named priority_queue
+# Target rules for targets named list
 
 # Build rule for target.
-priority_queue: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 priority_queue
-.PHONY : priority_queue
+list: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 list
+.PHONY : list
 
 # fast build rule for target.
-priority_queue/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\priority_queue.dir\build.make CMakeFiles/priority_queue.dir/build
-.PHONY : priority_queue/fast
+list/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\list.dir\build.make CMakeFiles/list.dir/build
+.PHONY : list/fast
 
-priority_queue.obj: priority_queue.cpp.obj
-.PHONY : priority_queue.obj
+stl_list.obj: stl_list.cpp.obj
+.PHONY : stl_list.obj
 
 # target to build an object file
-priority_queue.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\priority_queue.dir\build.make CMakeFiles/priority_queue.dir/priority_queue.cpp.obj
-.PHONY : priority_queue.cpp.obj
+stl_list.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\list.dir\build.make CMakeFiles/list.dir/stl_list.cpp.obj
+.PHONY : stl_list.cpp.obj
 
-priority_queue.i: priority_queue.cpp.i
-.PHONY : priority_queue.i
+stl_list.i: stl_list.cpp.i
+.PHONY : stl_list.i
 
 # target to preprocess a source file
-priority_queue.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\priority_queue.dir\build.make CMakeFiles/priority_queue.dir/priority_queue.cpp.i
-.PHONY : priority_queue.cpp.i
+stl_list.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\list.dir\build.make CMakeFiles/list.dir/stl_list.cpp.i
+.PHONY : stl_list.cpp.i
 
-priority_queue.s: priority_queue.cpp.s
-.PHONY : priority_queue.s
+stl_list.s: stl_list.cpp.s
+.PHONY : stl_list.s
 
 # target to generate assembly for a file
-priority_queue.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\priority_queue.dir\build.make CMakeFiles/priority_queue.dir/priority_queue.cpp.s
-.PHONY : priority_queue.cpp.s
+stl_list.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\list.dir\build.make CMakeFiles/list.dir/stl_list.cpp.s
+.PHONY : stl_list.cpp.s
 
 # Help Target
 help:
@@ -160,10 +160,10 @@ help:
 	@echo ... depend
 	@echo ... edit_cache
 	@echo ... rebuild_cache
-	@echo ... priority_queue
-	@echo ... priority_queue.obj
-	@echo ... priority_queue.i
-	@echo ... priority_queue.s
+	@echo ... list
+	@echo ... stl_list.obj
+	@echo ... stl_list.i
+	@echo ... stl_list.s
 .PHONY : help
 
 
