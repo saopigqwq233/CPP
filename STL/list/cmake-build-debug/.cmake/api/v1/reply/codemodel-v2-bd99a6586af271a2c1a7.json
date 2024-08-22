@@ -49,12 +49,12 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "D:/BITE/CPP/STL/list/cmake-build-debug",
-		"source" : "D:/BITE/CPP/STL/list"
+		"build" : "C:/bite/cpp/CPP/STL/list/cmake-build-debug",
+		"source" : "C:/bite/cpp/CPP/STL/list"
 	},
 	"version" : 
 	{
 		"major" : 2,
-		"minor" : 6
+		"minor" : 7
 	}
 }

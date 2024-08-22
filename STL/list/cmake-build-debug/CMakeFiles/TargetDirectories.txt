@@ -1,3 +1,3 @@
-D:/BITE/CPP/STL/list/cmake-build-debug/CMakeFiles/list.dir
-D:/BITE/CPP/STL/list/cmake-build-debug/CMakeFiles/edit_cache.dir
-D:/BITE/CPP/STL/list/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+C:/bite/cpp/CPP/STL/list/cmake-build-debug/CMakeFiles/list.dir
+C:/bite/cpp/CPP/STL/list/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/bite/cpp/CPP/STL/list/cmake-build-debug/CMakeFiles/rebuild_cache.dir
