@@ -103,11 +103,13 @@ namespace hash_bucket{
             return (size_t)key;
         }
     };
+    //模板特化
     template<>
     struct HashFunc<string>
     {
         size_t operator()(const string& key)
         {
+            //BKDR
             size_t hash = 0;
             for (auto e : key)
             {
