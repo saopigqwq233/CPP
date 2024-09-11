@@ -1,3 +1,9 @@
+<<<<<<< HEAD
 D:/BITE/CPP/c++11/cmake-build-debug/CMakeFiles/c__11.dir
 D:/BITE/CPP/c++11/cmake-build-debug/CMakeFiles/edit_cache.dir
 D:/BITE/CPP/c++11/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+=======
+C:/bite/cpp/CPP/c++11/cmake-build-debug/CMakeFiles/c__11.dir
+C:/bite/cpp/CPP/c++11/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/bite/cpp/CPP/c++11/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+>>>>>>> 3703c73099b2d9959226cbf0002ac7e8caecf0c3

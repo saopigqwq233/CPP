@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # Install script for directory: D:/BITE/CPP/c++11
+=======
+# Install script for directory: C:/bite/cpp/CPP/c++11
+>>>>>>> 3703c73099b2d9959226cbf0002ac7e8caecf0c3
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -34,7 +38,11 @@ endif()
 
 # Set default install directory permissions.
 if(NOT DEFINED CMAKE_OBJDUMP)
+<<<<<<< HEAD
   set(CMAKE_OBJDUMP "D:/ProgramEnvs/CLion/bin/mingw/bin/objdump.exe")
+=======
+  set(CMAKE_OBJDUMP "C:/Users/liu15/AppData/Local/Programs/CLion/bin/mingw/bin/objdump.exe")
+>>>>>>> 3703c73099b2d9959226cbf0002ac7e8caecf0c3
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)
@@ -45,5 +53,9 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
+<<<<<<< HEAD
 file(WRITE "D:/BITE/CPP/c++11/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+=======
+file(WRITE "C:/bite/cpp/CPP/c++11/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+>>>>>>> 3703c73099b2d9959226cbf0002ac7e8caecf0c3
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

@@ -7,9 +7,9 @@ using namespace my;
 void test_map()
 {
     unordered_map<string, string> dict;
-    dict.insert(make_pair("sort", "ÅÅÐò"));
-    dict.insert(make_pair("string", "×Ö·û´®"));
-    dict.insert(make_pair("insert", "²åÈë"));
+    dict.insert(make_pair("sort", "ï¿½ï¿½ï¿½ï¿½"));
+    dict.insert(make_pair("string", "ï¿½Ö·ï¿½ï¿½ï¿½"));
+    dict.insert(make_pair("insert", "ï¿½ï¿½ï¿½ï¿½"));
 
     for (auto& kv : dict)
     {
@@ -31,10 +31,10 @@ void test_map()
     }
     cout << endl;
 }
-int main(){
-    test_map();
-    return 0;
-}
+//int main(){
+//    test_map();
+//    return 0;
+//}
 
 
 

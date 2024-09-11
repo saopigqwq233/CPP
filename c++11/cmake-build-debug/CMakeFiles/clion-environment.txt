@@ -1,5 +1,13 @@
+<<<<<<< HEAD
 ToolSet: 11.0 w64 (local)@D:\ProgramEnvs\CLion\bin\mingw
 Ninja: 1.12.0@D:\ProgramEnvs\CLion\bin\ninja\win\x64\ninja.exe
 Options: 
 
 Options:-DCMAKE_MAKE_PROGRAM=D:/ProgramEnvs/CLion/bin/ninja/win/x64/ninja.exe
+=======
+ToolSet: 11.0 w64 (local)@C:\Users\liu15\AppData\Local\Programs\CLion\bin\mingw
+Ninja: 1.12.0@C:\Users\liu15\AppData\Local\Programs\CLion\bin\ninja\win\x64\ninja.exe
+Options: 
+
+Options:
+>>>>>>> 3703c73099b2d9959226cbf0002ac7e8caecf0c3

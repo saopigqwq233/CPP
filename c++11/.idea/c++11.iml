@@ -1,2 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
 <module classpath="CMake" type="CPP_MODULE" version="4" />
+=======
+<module type="CPP_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$" />
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>
+>>>>>>> 3703c73099b2d9959226cbf0002ac7e8caecf0c3
